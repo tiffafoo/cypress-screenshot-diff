@@ -1,0 +1,38 @@
+{
+  "name": "cypress-screenshot-diff",
+  "version": "0.0.1",
+  "description": "Cypress visual regression plugin which handles multiple screenshot folders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [".js"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirMerr/cypress-screenshot-diff.git"
+  },
+  "keywords": [
+    "cypress",
+    "screenshot",
+    "diff",
+    "visual",
+    "regression"
+  ],
+  "author": "Tiffany Le-Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirMerr/cypress-screenshot-diff/issues"
+  },
+  "homepage": "https://github.com/sirMerr/cypress-screenshot-diff#readme",
+  "dependencies": {
+    "cypress": "^4.2.0",
+    "pixelmatch": "^5.1.0",
+    "pngjs": "^3.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "^2.20.1"
+  }
+}
