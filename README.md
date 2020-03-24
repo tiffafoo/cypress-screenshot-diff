@@ -19,26 +19,18 @@ cypress-screenshot-diff extends Cypress' cy command and adds `matchScreenshot()`
 1. Add this line to your project's `cypress/support/commands.js`:
 
    ```js
-    import 'cypress-screenshot-diff';
+    const { addCommands } = require("cypress-screenshot-diff");
+    
+    addCommands();
    ```
 
 2. Add/Update these tasks to your project's `cypress/plugins/index.js`
 
    ```js
-   const {
-     onAfterScreenshot,
-     baseExists,
-     compareScreenshots
-   } = require("cypress-screenshot-diff");
+   const { addScreenshotDiffPlugin } = require("cypress-screenshot-diff");
 
    module.exports = (on, config) => {
-     // `on` is used to hook into various events Cypress emits
-     // `config` is the resolved Cypress config
-     on('after:screenshot', onAfterScreenshot);
-     on('task', {
-       baseExists,
-       compareScreenshots,
-     });
+     addScreenshotDiffPlugin(on,config);
    };
    ```
 
