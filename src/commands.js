@@ -107,12 +107,16 @@ function matchScreenshot(subject, args) {
   });
 }
 
-Cypress.Commands.add('configureCypressScreenshotDiff', configureCypressScreenshotDiff);
+function addCommands() {
+  Cypress.Commands.add('configureCypressScreenshotDiff', configureCypressScreenshotDiff);
 
-Cypress.Commands.add(
-  'matchScreenshot',
-  {
-    prevSubject: ['optional', 'element', 'window', 'document'],
-  },
-  matchScreenshot,
-);
+  Cypress.Commands.add(
+    'matchScreenshot',
+    {
+      prevSubject: ['optional', 'element', 'window', 'document'],
+    },
+    matchScreenshot,
+  );
+}
+
+module.exports = { addCommands };

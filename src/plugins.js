@@ -99,8 +99,17 @@ function onAfterScreenshot(details) {
   });
 }
 
+function addScreenshotDiffPlugin(on, config) {
+  on('task', {
+    baseExists,
+    compareScreenshots,
+  });
+  on('after:screenshot', onAfterScreenshot);
+}
+
 module.exports = {
   baseExists,
   compareScreenshots,
   onAfterScreenshot,
+  addScreenshotDiffPlugin,
 };
