@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": [".js"],
+  "files": ["*.js"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sirMerr/cypress-screenshot-diff.git"
