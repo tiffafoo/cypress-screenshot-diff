@@ -80,27 +80,30 @@ function matchScreenshot(subject, args) {
 
   cy.task('baseExists', screenshotsFolder).then((hasBase) => {
     const type = hasBase ? 'actual' : 'base';
-    const target = subject ? cy.wrap(subject) : cy;
-    // For easy slicing of path ignoring the root screenshot folder
-    target.screenshot(`${config.prefixDifferentiator}${screenshotsFolder}/${type}`, options);
 
-    if (!hasBase) {
-      cy.log(`✅Successfully created new base image of ${name}. Check out ${screenshotsFolder}/base.png`);
+    subject.each((el) => {
+      const target = el ? cy.wrap(el) : cy;
+      // For easy slicing of path ignoring the root screenshot folder
+      target.screenshot(`${config.prefixDifferentiator}${screenshotsFolder}/${type}`, options);
 
-      return null;
-    }
+      if (!hasBase) {
+        cy.log(`✅Successfully created new base image of ${name}. Check out ${screenshotsFolder}/base.png`);
 
-    cy.task('compareScreenshots', screenshotsFolder).then((diffPixels) => {
-      if (diffPixels === 0) {
-        cy.log(`✅Actual image of ${name} was the same as base`);
-
-        return null;
+        return;
       }
 
-      throw new Error(
-        `❌Actual image of ${name} differed by ${diffPixels} pixels. Check out `,
-        `${screenshotsFolder}/diff.png for more information.`,
-      );
+      cy.task('compareScreenshots', screenshotsFolder).then((diffPixels) => {
+        if (diffPixels === 0) {
+          cy.log(`✅Actual image of ${name} was the same as base`);
+
+          return null;
+        }
+
+        throw new Error(
+          `❌Actual image of ${name} differed by ${diffPixels} pixels. Check out `,
+          `${screenshotsFolder}/diff.png for more information.`,
+        );
+      });
     });
 
     return null;
