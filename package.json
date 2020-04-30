@@ -1,6 +1,6 @@
 {
   "name": "cypress-screenshot-diff",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cypress visual regression plugin which handles multiple screenshot folders",
   "main": "index.js",
   "scripts": {
@@ -27,8 +27,10 @@
     "url": "https://github.com/sirMerr/cypress-screenshot-diff/issues"
   },
   "homepage": "https://github.com/sirMerr/cypress-screenshot-diff#readme",
+  "peerDependencies": {
+    "cypress": "^4.2.0"
+  },
   "dependencies": {
-    "cypress": "^4.2.0",
     "pixelmatch": "^5.1.0",
     "pngjs": "^3.4.0"
   },
