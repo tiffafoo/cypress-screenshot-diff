@@ -81,7 +81,7 @@ function matchScreenshot(subject, args) {
   cy.task('baseExists', screenshotsFolder).then((hasBase) => {
     const type = hasBase ? 'actual' : 'base';
 
-    subject.each((el) => {
+    subject && subject.each((el) => {
       const target = el ? cy.wrap(el) : cy;
       // For easy slicing of path ignoring the root screenshot folder
       target.screenshot(`${config.prefixDifferentiator}${screenshotsFolder}/${type}`, options);
