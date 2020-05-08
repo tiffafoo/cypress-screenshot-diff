@@ -78,10 +78,14 @@ function matchScreenshot(subject, args) {
 
   const { name, screenshotsFolder } = getTestFolderPathFromScripts(this, rawName);
 
+  if (!subject) {
+    throw new Error('❌Error: given subject was undefined, please check the selectors');
+  }
+
   cy.task('baseExists', screenshotsFolder).then((hasBase) => {
     const type = hasBase ? 'actual' : 'base';
 
-    subject && subject.each((el) => {
+    subject.each((el) => {
       const target = el ? cy.wrap(el) : cy;
       // For easy slicing of path ignoring the root screenshot folder
       target.screenshot(`${config.prefixDifferentiator}${screenshotsFolder}/${type}`, options);
