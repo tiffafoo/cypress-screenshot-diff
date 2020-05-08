@@ -78,12 +78,12 @@ function matchScreenshot(subject, args) {
 
   const { name, screenshotsFolder } = getTestFolderPathFromScripts(this, rawName);
 
-  if (!subject) {
-    throw new Error('❌Error: given subject was undefined, please check the selectors');
-  }
-
   cy.task('baseExists', screenshotsFolder).then((hasBase) => {
     const type = hasBase ? 'actual' : 'base';
+    
+    if (!subject) {
+      throw new Error(`❌Error: given subject was undefined, please check the selectors. baseExists was ${hasBase}.`);
+    }
 
     subject.each((el) => {
       const target = el ? cy.wrap(el) : cy;
