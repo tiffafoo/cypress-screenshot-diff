@@ -1,6 +1,6 @@
 {
   "name": "cypress-screenshot-diff",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Cypress visual regression plugin which handles multiple screenshot folders",
   "main": "index.js",
   "scripts": {
