@@ -80,6 +80,10 @@ function matchScreenshot(subject, args) {
 
   cy.task('baseExists', screenshotsFolder).then((hasBase) => {
     const type = hasBase ? 'actual' : 'base';
+    
+    if (!subject) {
+      throw new Error(`❌Error: given subject was undefined, please check the selectors. baseExists was ${hasBase}.`);
+    }
 
     subject.each((el) => {
       const target = el ? cy.wrap(el) : cy;
