@@ -85,7 +85,7 @@ function matchScreenshot(subject, args) {
       throw new Error(`❌Error: given subject was undefined, please check the selectors. baseExists was ${hasBase}.`);
     }
 
-    subject.each((el) => {
+    subject.each((index, el) => {
       const target = el ? cy.wrap(el) : cy;
       // For easy slicing of path ignoring the root screenshot folder
       target.screenshot(`${config.prefixDifferentiator}${screenshotsFolder}/${type}`, options);
